@@ -4,10 +4,11 @@ function rollDice(sides) {
 }
 
 function startAdventure() {
-  document.getElementById("story").innerHTML =
-    "You stand before an abandoned stone well.<br><br>" +
-    "The wind is still.<br><br>" +
-    "Bugs stares into the darkness below.";
+  document.getElementById("story").innerHTML = "";
+
+  addToStory("You stand before an abandoned stone well.");
+  addToStory("The wind is still.");
+  addToStory("Bugs stares into the darkness below.");
 
   document.getElementById("choices").innerHTML =
     '<button onclick="lookDown()">Look Into The Well</button>' +
@@ -15,8 +16,8 @@ function startAdventure() {
 }
 
 function lookDown() {
-  document.getElementById("story").textContent =
-    "You lean over the edge of the well. Far below, something shifts in the dark.";
+  addToStory("> Look Into The Well");
+  addToStory("You lean over the edge of the well. Far below, something shifts in the dark.");
 
   document.getElementById("choices").innerHTML =
     '<button onclick="startAdventure()">Back To The Well</button>';
@@ -28,4 +29,9 @@ function walkAway() {
 
   document.getElementById("choices").innerHTML =
     '<button onclick="startAdventure()">Return To The Well</button>';
+}
+
+function addToStory(text) {
+  const story = document.getElementById("story");
+  story.innerHTML += "<p>" + text + "</p>";
 }
