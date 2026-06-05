@@ -2,6 +2,7 @@ function rollDice(sides) {
   const result = Math.floor(Math.random() * sides) + 1;
   document.getElementById("result").textContent = result;
 }
+
 function startAdventure() {
   document.getElementById("story").innerHTML =
     "You stand before an abandoned stone well.<br><br>" +
@@ -27,5 +28,4 @@ function walkAway() {
 
   document.getElementById("choices").innerHTML =
     '<button onclick="startAdventure()">Return To The Well</button>';
-}
 }
