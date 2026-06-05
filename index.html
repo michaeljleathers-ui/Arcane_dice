@@ -9,25 +9,26 @@
   <h1>Arcane Tabletop</h1>
   <p>Solo adventure dashboard for Michael & Bugs.</p>
 
+<nav>
 <button>Adventure</button>
 <button>Character</button>
 <button>Inventory</button>
 <button>Quest Log</button>
 <button>Bugs</button>
 <button>Dice</button>
+</nav>
 
+<section>
 <h2>Adventure</h2>
 
 <div id="story">
     Welcome to Arcane Tabletop.
 </div>
-
 <br>
+<button onclick="startAdventure()">Begin Adventure</button>
+</section>  
 
-<button onclick="startAdventure()">
-    Begin Adventure
-</button>
-  
+<section></section>
   <h2>Dice Tray</h2>
 
   <button onclick="rollDice(20)">Roll Onyx D20</button>
@@ -36,10 +37,11 @@
   <button onclick="rollDice(8)">Roll Diamond D8</button>
   <button onclick="rollDice(6)">Roll Classic D6</button>
   <button onclick="rollDice(4)">Roll Fire D4</button>
-
+    
   <h2>Result</h2>
   <div id="result">--</div>
-
+</section>
+  
   <script src="script.js"></script>
 </body>
 </html>
