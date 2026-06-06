@@ -240,11 +240,25 @@ function showView(viewId) {
   document.getElementById("adventureView").classList.add("hidden");
   document.getElementById("characterView").classList.add("hidden");
   document.getElementById("inventoryView").classList.add("hidden");
-  document.getElementById("questLogView").classList.add("hidden");
   document.getElementById("bugsView").classList.add("hidden");
+  document.getElementById("questLogView").classList.add("hidden");
   document.getElementById("diceView").classList.add("hidden");
 
   document.getElementById(viewId).classList.remove("hidden");
+
+  const navButtons = document.querySelectorAll("nav button");
+
+  navButtons.forEach(button => {
+    button.classList.remove("nav-active");
+  });
+
+  const clickedButton = document.querySelector(
+    'button[onclick="showView(\'' + viewId + '\')"]'
+  );
+
+  if (clickedButton) {
+    clickedButton.classList.add("nav-active");
+  }
 }
 
 function resetGame() {
@@ -294,4 +308,7 @@ function addInventoryItem(itemName) {
   saveGame();
 }
 
-window.onload = loadGame;
+window.onload = function() {
+  loadGame();
+  showView("adventureView");
+};
