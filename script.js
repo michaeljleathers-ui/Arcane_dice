@@ -115,6 +115,7 @@ const scenes = {
 };
 
 function startAdventure() {
+  document.getElementById("startControls").innerHTML = "";
   document.getElementById("story").innerHTML = "";
   loadScene("start", false);
   saveGame();
