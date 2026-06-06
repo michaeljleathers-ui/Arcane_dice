@@ -232,4 +232,24 @@ function showView(viewId) {
   document.getElementById(viewId).classList.remove("hidden");
 }
 
+function resetGame() {
+  localStorage.removeItem(SAVE_KEY);
+
+  document.getElementById("story").innerHTML =
+    "<p>The trail continues...</p>";
+
+  document.getElementById("choices").innerHTML = "";
+
+  document.getElementById("result").textContent = "--";
+
+  document.getElementById("questStatus").textContent =
+    "Status: In Progress";
+
+  document.getElementById("knownEndings").innerHTML =
+    "<li>None recorded yet</li>";
+
+  document.getElementById("trailNotes").textContent =
+    "The trail has only just begun.";
+}
+
 window.onload = loadGame;
