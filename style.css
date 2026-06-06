@@ -158,3 +158,10 @@ h2 {
 .inventory-card li {
   text-align: left;
 }
+
+.nav-active {
+  background: #6b5430;
+  color: #ffffff;
+  border-color: #d7b56d;
+  box-shadow: 0 0 8px rgba(215, 181, 109, 0.6);
+}
