@@ -214,15 +214,19 @@ function loadGame() {
 }
 
 function updateQuestLog(endingName) {
-  document.getElementById("questStatus").textContent = "Status: Complete";
+  document.getElementById("questStatus").textContent =
+    "Status: Complete";
 
   document.getElementById("knownEndings").innerHTML =
     "<li>" + endingName + "</li>";
 
   document.getElementById("trailNotes").textContent =
     "The Abandoned Well has been completed. The trail continues...";
-}
 
+  if (endingName === "The Forgotten Treasure") {
+    addInventoryItem("Tarnished Silver Ring");
+  }
+}
 function showView(viewId) {
   document.getElementById("adventureView").classList.add("hidden");
   document.getElementById("characterView").classList.add("hidden");
@@ -254,6 +258,30 @@ function resetGame() {
 
   document.getElementById("trailNotes").textContent =
     "The trail has only just begun.";
+}
+
+function addInventoryItem(itemName) {
+  const questItems = document.getElementById("questItems");
+
+  if (
+    questItems.innerHTML.includes(itemName)
+  ) {
+    return;
+  }
+
+  if (
+    questItems.innerHTML.includes("None discovered yet")
+  ) {
+    questItems.innerHTML = "";
+  }
+
+  questItems.innerHTML +=
+    "<li>" + itemName + "</li>";
+
+  document.getElementById("inventoryNotes").textContent =
+    "Your inventory has been updated.";
+
+  saveGame();
 }
 
 window.onload = loadGame;
