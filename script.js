@@ -198,26 +198,18 @@ function loadGame() {
   document.getElementById("story").innerHTML = saveData.story;
   document.getElementById("choices").innerHTML = saveData.choices;
   document.getElementById("result").textContent = saveData.result || "--";
+
+  if (saveData.questStatus) {
+    document.getElementById("questStatus").textContent = saveData.questStatus;
   }
 
-if (saveData.knownEndings) {
-  document.getElementById("knownEndings").innerHTML = saveData.knownEndings;
-}
+  if (saveData.knownEndings) {
+    document.getElementById("knownEndings").innerHTML = saveData.knownEndings;
+  }
 
-if (saveData.trailNotes) {
-  document.getElementById("trailNotes").textContent = saveData.trailNotes;
-}
-
-if (saveData.questStatus) {
-  document.getElementById("questStatus").textContent = saveData.questStatus;
-}
-
-if (saveData.knownEndings) {
-  document.getElementById("knownEndings").innerHTML = saveData.knownEndings;
-}
-
-if (saveData.trailNotes) {
-  document.getElementById("trailNotes").textContent = saveData.trailNotes;
+  if (saveData.trailNotes) {
+    document.getElementById("trailNotes").textContent = saveData.trailNotes;
+  }
 }
 
 function updateQuestLog(endingName) {
@@ -230,8 +222,6 @@ function updateQuestLog(endingName) {
     "The Abandoned Well has been completed. The trail continues...";
 }
 
-window.onload = loadGame;
-
 function showView(viewId) {
   document.getElementById("adventureView").classList.add("hidden");
   document.getElementById("characterView").classList.add("hidden");
@@ -241,3 +231,5 @@ function showView(viewId) {
 
   document.getElementById(viewId).classList.remove("hidden");
 }
+
+window.onload = loadGame;
