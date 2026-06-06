@@ -197,3 +197,10 @@ function loadGame() {
 }
 
 window.onload = loadGame;
+
+function showView(viewId) {
+  document.getElementById("adventureView").classList.add("hidden");
+  document.getElementById("characterView").classList.add("hidden");
+
+  document.getElementById(viewId).classList.remove("hidden");
+}
