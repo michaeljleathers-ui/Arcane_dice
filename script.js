@@ -183,7 +183,9 @@ function saveGame() {
     result: document.getElementById("result").textContent,
     questStatus: document.getElementById("questStatus").textContent,
     knownEndings: document.getElementById("knownEndings").innerHTML,
-    trailNotes: document.getElementById("trailNotes").textContent
+    trailNotes: document.getElementById("trailNotes").textContent,
+    questItems: document.getElementById("questItems").innerHTML,
+    inventoryNotes: document.getElementById("inventoryNotes").textContent
   };
 
   localStorage.setItem(SAVE_KEY, JSON.stringify(saveData));
@@ -211,6 +213,13 @@ function loadGame() {
   if (saveData.trailNotes) {
     document.getElementById("trailNotes").textContent = saveData.trailNotes;
   }
+  if (saveData.questItems) {
+  document.getElementById("questItems").innerHTML = saveData.questItems;
+}
+
+if (saveData.inventoryNotes) {
+  document.getElementById("inventoryNotes").textContent = saveData.inventoryNotes;
+}
 }
 
 function updateQuestLog(endingName) {
