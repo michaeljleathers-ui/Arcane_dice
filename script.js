@@ -203,5 +203,7 @@ function showView(viewId) {
   document.getElementById("characterView").classList.add("hidden");
   document.getElementById("inventoryView").classList.add("hidden");
   document.getElementById("bugsView").classList.add("hidden");
+  document.getElementById("questLogView").classList.add("hidden");
+
   document.getElementById(viewId).classList.remove("hidden");
 }
