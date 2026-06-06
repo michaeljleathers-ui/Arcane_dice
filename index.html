@@ -14,7 +14,7 @@
   <button onclick="showView('adventureView')">Adventure</button>
   <button onclick="showView('characterView')">Character</button>
   <button onclick="showView('inventoryView')">Inventory</button>
-  <button>Quest Log</button>
+  <button onclick="showView('questLogView')">Quest Log</button>
   <button onclick="showView('bugsView')">Bugs</button>
   <button>Dice</button>
 </nav>
@@ -92,6 +92,28 @@
 
     <p>
       Bugs appears to know more about this world than he is willing to explain.
+    </p>
+
+  </div>
+</section>
+
+  <section id="questLogView" class="hidden">
+  <h2>Quest Log</h2>
+
+  <div class="inventory-card">
+
+    <h3>Current Quest</h3>
+    <p><strong>The Abandoned Well</strong></p>
+    <p>Status: In Progress</p>
+
+    <h3>Known Endings</h3>
+    <ul>
+      <li>None recorded yet</li>
+    </ul>
+
+    <h3>Trail Notes</h3>
+    <p>
+      The trail has only just begun.
     </p>
 
   </div>
