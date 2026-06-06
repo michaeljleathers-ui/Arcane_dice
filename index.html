@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Arcane Tabletop</title>
+  <title>Drifter's Trail</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Arcane Tabletop</h1>
+  <h1>Drifter's Trail</h1>
   <p>Solo adventure dashboard for Michael & Bugs.</p>
 
 <nav>
-<button>Adventure</button>
-<button>Character</button>
-<button>Inventory</button>
-<button>Quest Log</button>
-<button>Bugs</button>
-<button>Dice</button>
+  <button onclick="showView('adventureView')">Adventure</button>
+  <button onclick="showView('characterView')">Character</button>
+  <button>Inventory</button>
+  <button>Quest Log</button>
+  <button>Bugs</button>
+  <button>Dice</button>
 </nav>
 
-<section>
+<section id="adventureView">
 <h2>Adventure</h2>
 
 <div id="story">
-  <p>Welcome to Arcane Tabletop.</p>
+  <p>Welcome to Drifter's Trail.</p>
 </div>
 <br>
 <div id="choices">
@@ -31,9 +31,25 @@
 </div>
 </section>  
 
-<section>
+<section id="characterView" class="hidden">
+  <h2>Character</h2>
+
+  <div class="character-card">
+    <h3>Michael</h3>
+    <p><strong>Level:</strong> 1</p>
+    <p><strong>Health:</strong> 10 / 10</p>
+    <p><strong>Gold:</strong> 0</p>
+    <p><strong>Role:</strong> Drifter</p>
+
+    <h3>Companion</h3>
+    <p><strong>Bugs</strong></p>
+    <p><strong>Status:</strong> Curious</p>
+    <p><strong>Mood:</strong> Watching the trail</p>
+  </div>
+</section>
   
-  <h2>Dice Tray</h2>
+<section>
+    <h2>Dice Tray</h2>
 
   <button onclick="rollDice(20)">Roll Onyx D20</button>
   <button onclick="rollDice(12)">Roll Marble D12</button>
