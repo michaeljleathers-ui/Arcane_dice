@@ -1,3 +1,5 @@
+const SAVE_KEY = "driftersTrailSave";
+
 function rollDice(sides) {
   const result = Math.floor(Math.random() * sides) + 1;
   document.getElementById("result").textContent = result;
@@ -115,6 +117,7 @@ const scenes = {
 function startAdventure() {
   document.getElementById("story").innerHTML = "";
   loadScene("start", false);
+  saveGame();
 }
 
 function loadScene(sceneId, logChoice = true) {
@@ -122,6 +125,7 @@ function loadScene(sceneId, logChoice = true) {
 
   if (!scene) {
     addToStory("ERROR: Scene not found: " + sceneId);
+    saveGame();
     return;
   }
 
@@ -135,6 +139,8 @@ function loadScene(sceneId, logChoice = true) {
     document.getElementById("choices").innerHTML =
       "<h3>QUEST COMPLETE</h3>" +
       "<p>Ending: " + scene.ending + "</p>";
+
+    saveGame();
     return;
   }
 
@@ -143,6 +149,8 @@ function loadScene(sceneId, logChoice = true) {
       return '<button onclick="loadScene(\'' + choice.next + '\')">' + choice.label + '</button>';
     })
     .join("");
+
+  saveGame();
 }
 
 function getChoiceLabel(sceneId) {
@@ -165,3 +173,27 @@ function addToStory(text) {
   const story = document.getElementById("story");
   story.innerHTML += "<p>" + text + "</p>";
 }
+
+function saveGame() {
+  const saveData = {
+    story: document.getElementById("story").innerHTML,
+    choices: document.getElementById("choices").innerHTML,
+    result: document.getElementById("result").textContent
+  };
+
+  localStorage.setItem(SAVE_KEY, JSON.stringify(saveData));
+}
+
+function loadGame() {
+  const savedGame = localStorage.getItem(SAVE_KEY);
+
+  if (!savedGame) return;
+
+  const saveData = JSON.parse(savedGame);
+
+  document.getElementById("story").innerHTML = saveData.story;
+  document.getElementById("choices").innerHTML = saveData.choices;
+  document.getElementById("result").textContent = saveData.result || "--";
+}
+
+window.onload = loadGame;
