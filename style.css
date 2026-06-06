@@ -146,3 +146,15 @@ h2 {
 .inventory-card li {
   margin-bottom: 10px;
 }
+.inventory-card {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.inventory-card h3,
+.inventory-card p,
+.inventory-card ul,
+.inventory-card li {
+  text-align: left;
+}
