@@ -136,13 +136,14 @@ function loadScene(sceneId, logChoice = true) {
   scene.text.forEach(line => addToStory(line));
 
   if (scene.ending) {
-    document.getElementById("choices").innerHTML =
-      "<h3>QUEST COMPLETE</h3>" +
-      "<p>Ending: " + scene.ending + "</p>";
+  document.getElementById("choices").innerHTML =
+    "<h3>QUEST COMPLETE</h3>" +
+    "<p>Ending: " + scene.ending + "</p>";
 
-    saveGame();
-    return;
-  }
+  updateQuestLog(scene.ending);
+  saveGame();
+  return;
+}
 
   document.getElementById("choices").innerHTML = scene.choices
     .map(choice => {
@@ -178,7 +179,10 @@ function saveGame() {
   const saveData = {
     story: document.getElementById("story").innerHTML,
     choices: document.getElementById("choices").innerHTML,
-    result: document.getElementById("result").textContent
+    result: document.getElementById("result").textContent,
+    questStatus: document.getElementById("questStatus").textContent,
+    knownEndings: document.getElementById("knownEndings").innerHTML,
+    trailNotes: document.getElementById("trailNotes").textContent
   };
 
   localStorage.setItem(SAVE_KEY, JSON.stringify(saveData));
@@ -194,6 +198,37 @@ function loadGame() {
   document.getElementById("story").innerHTML = saveData.story;
   document.getElementById("choices").innerHTML = saveData.choices;
   document.getElementById("result").textContent = saveData.result || "--";
+  }
+
+if (saveData.knownEndings) {
+  document.getElementById("knownEndings").innerHTML = saveData.knownEndings;
+}
+
+if (saveData.trailNotes) {
+  document.getElementById("trailNotes").textContent = saveData.trailNotes;
+}
+
+if (saveData.questStatus) {
+  document.getElementById("questStatus").textContent = saveData.questStatus;
+}
+
+if (saveData.knownEndings) {
+  document.getElementById("knownEndings").innerHTML = saveData.knownEndings;
+}
+
+if (saveData.trailNotes) {
+  document.getElementById("trailNotes").textContent = saveData.trailNotes;
+}
+}
+
+function updateQuestLog(endingName) {
+  document.getElementById("questStatus").textContent = "Status: Complete";
+
+  document.getElementById("knownEndings").innerHTML =
+    "<li>" + endingName + "</li>";
+
+  document.getElementById("trailNotes").textContent =
+    "The Abandoned Well has been completed. The trail continues...";
 }
 
 window.onload = loadGame;
