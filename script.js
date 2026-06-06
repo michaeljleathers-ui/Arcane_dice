@@ -219,7 +219,6 @@ if (saveData.knownEndings) {
 if (saveData.trailNotes) {
   document.getElementById("trailNotes").textContent = saveData.trailNotes;
 }
-}
 
 function updateQuestLog(endingName) {
   document.getElementById("questStatus").textContent = "Status: Complete";
