@@ -239,6 +239,9 @@ function resetGame() {
   document.getElementById("story").innerHTML =
     "<p>The trail continues...</p>";
 
+  document.getElementById("startControls").innerHTML =
+  '<button onclick="startAdventure()">Begin Adventure</button>';
+
   document.getElementById("choices").innerHTML = "";
 
   document.getElementById("result").textContent = "--";
