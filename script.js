@@ -164,4 +164,4 @@ function getChoiceLabel(sceneId) {
 function addToStory(text) {
   const story = document.getElementById("story");
   story.innerHTML += "<p>" + text + "</p>";
-}}
+}
