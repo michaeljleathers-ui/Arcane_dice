@@ -131,3 +131,18 @@ h2 {
 .character-card p {
   text-align: left;
 }
+
+.inventory-card {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.inventory-card p,
+.inventory-card li {
+  text-align: left;
+}
+
+.inventory-card li {
+  margin-bottom: 10px;
+}
