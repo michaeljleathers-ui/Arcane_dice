@@ -117,3 +117,17 @@ h2 {
     text-align: left;
   }
 }
+
+.hidden {
+  display: none;
+}
+
+.character-card {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.character-card p {
+  text-align: left;
+}
