@@ -16,7 +16,7 @@
   <button onclick="showView('inventoryView')">Inventory</button>
   <button onclick="showView('questLogView')">Quest Log</button>
   <button onclick="showView('bugsView')">Bugs</button>
-  <button>Dice</button>
+  <button onclick="showView('diceView')">Dice</button>
 </nav>
 
 <section id="adventureView">
@@ -132,7 +132,7 @@
   </div>
 </section>
   
-<section>
+<section id="diceView" class="hidden">
     <h2>Dice Tray</h2>
 
   <button onclick="rollDice(20)">Roll Onyx D20</button>
