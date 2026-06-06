@@ -240,8 +240,9 @@ function showView(viewId) {
   document.getElementById("adventureView").classList.add("hidden");
   document.getElementById("characterView").classList.add("hidden");
   document.getElementById("inventoryView").classList.add("hidden");
-  document.getElementById("bugsView").classList.add("hidden");
   document.getElementById("questLogView").classList.add("hidden");
+  document.getElementById("bugsView").classList.add("hidden");
+  document.getElementById("diceView").classList.add("hidden");
 
   document.getElementById(viewId).classList.remove("hidden");
 }
