@@ -1,4 +1,9 @@
 const SAVE_KEY = "driftersTrailSave";
+let gameState = {
+  inventory: [],
+  completedQuests: [],
+  worldFlags: {}
+};
 
 function rollDice(sides) {
   const result = Math.floor(Math.random() * sides) + 1;
@@ -184,7 +189,7 @@ function saveGame() {
     questStatus: document.getElementById("questStatus").textContent,
     knownEndings: document.getElementById("knownEndings").innerHTML,
     trailNotes: document.getElementById("trailNotes").textContent,
-    questItems: document.getElementById("questItems").innerHTML,
+    gameState: gameState,
     inventoryNotes: document.getElementById("inventoryNotes").textContent
   };
 
@@ -213,9 +218,11 @@ function loadGame() {
   if (saveData.trailNotes) {
     document.getElementById("trailNotes").textContent = saveData.trailNotes;
   }
-  if (saveData.questItems) {
-  document.getElementById("questItems").innerHTML = saveData.questItems;
+  if (saveData.gameState) {
+  gameState = saveData.gameState;
 }
+
+renderInventory();
 
 if (saveData.inventoryNotes) {
   document.getElementById("inventoryNotes").textContent = saveData.inventoryNotes;
@@ -282,30 +289,43 @@ function resetGame() {
 
   document.getElementById("trailNotes").textContent =
     "The trail has only just begun.";
+  
+  gameState = {
+  inventory: [],
+  completedQuests: [],
+  worldFlags: {}
+};
+
+  renderInventory();
+
+  document.getElementById("inventoryNotes").textContent =
+  "No inventory changes have been recorded.";
 }
 
 function addInventoryItem(itemName) {
-  const questItems = document.getElementById("questItems");
-
-  if (
-    questItems.innerHTML.includes(itemName)
-  ) {
-    return;
+  if (!gameState.inventory.includes(itemName)) {
+    gameState.inventory.push(itemName);
   }
 
-  if (
-    questItems.innerHTML.includes("None discovered yet")
-  ) {
-    questItems.innerHTML = "";
-  }
-
-  questItems.innerHTML +=
-    "<li>" + itemName + "</li>";
+  renderInventory();
 
   document.getElementById("inventoryNotes").textContent =
     "Your inventory has been updated.";
 
   saveGame();
+}
+
+function renderInventory() {
+  const questItems = document.getElementById("questItems");
+
+  if (gameState.inventory.length === 0) {
+    questItems.innerHTML = "<li>None discovered yet</li>";
+    return;
+  }
+
+  questItems.innerHTML = gameState.inventory
+    .map(item => "<li>" + item + "</li>")
+    .join("");
 }
 
 window.onload = function() {
